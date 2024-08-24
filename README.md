@@ -1,2 +1,1 @@
-# Music.AI
-Music.ai technical interview test
+# Music.AI Test
