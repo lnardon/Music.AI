@@ -162,12 +162,12 @@ function Song() {
             <span>
               {audioRef.current
                 ? formatTime(audioRef.current.currentTime)
-                : "0:00"}
+                : "--:--"}
             </span>
             <span>
               {audioRef.current
                 ? formatTime(audioRef.current.duration)
-                : "0:00"}
+                : "--:--"}
             </span>
           </div>
 

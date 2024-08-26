@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
+import "./globals.css";
 
 const font = localFont({
   src: [
@@ -16,7 +17,6 @@ const font = localFont({
   ],
   display: "swap",
 });
-import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Muse.ai",
