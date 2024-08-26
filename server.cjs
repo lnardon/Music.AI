@@ -13,10 +13,10 @@ app.use((req, res, next) => {
   res.header("Access-Control-Max-Age", "2592000");
   next();
 });
-app.use(express.static(path.join(__dirname, "dist")));
+app.use(express.static(path.join(__dirname, "out")));
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "dist", "index.html"));
+  res.sendFile(path.join(__dirname, "out", "index.html"));
 });
 
 app.get("/songs", (req, res) => {
