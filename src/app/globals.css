@@ -2,25 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@font-face {
-  font-family: "Articulat";
-  src: url("/assets/fonts/ArticulatCF-Medium.otf");
-  font-weight: 600;
-}
-
-@font-face {
-  font-family: "Articulat";
-  src: url("/assets/fonts/ArticulatCF-Normal.otf");
-  font-weight: 500;
-}
-
-body {
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 100%;
-  font-family: "Articulat", helvetica, arial, sans-serif;
-}
-
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
@@ -43,6 +24,9 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb));
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 100%;
 }
 
 @layer utilities {

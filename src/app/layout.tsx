@@ -1,8 +1,22 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
+import localFont from "next/font/local";
 
-const inter = Inter({ subsets: ["latin"] });
+const font = localFont({
+  src: [
+    {
+      path: "../../public/assets/fonts/ArticulatCF-Medium.otf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../../public/assets/fonts/ArticulatCF-Normal.otf",
+      weight: "400",
+      style: "normal",
+    },
+  ],
+  display: "swap",
+});
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Muse.ai",
@@ -16,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className} id="root">
+      <body className={font.className} id="root">
         {children}
       </body>
     </html>
