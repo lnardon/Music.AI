@@ -19,7 +19,6 @@ const SearchField: React.FC = () => {
           option.song.title.toLowerCase().includes(search.toLowerCase())
         )
       );
-      console.log(results, options);
     } else {
       setResults([]);
     }
@@ -78,7 +77,7 @@ const SearchField: React.FC = () => {
         ReactDOM.createPortal(
           <div
             ref={dropdownRef}
-            className={`absolute bg-gray-800 p-4 shadow-lg rounded-md z-50`}
+            className={`absolute bg-[#2D2D2D] p-4 shadow-lg rounded-md z-50`}
             style={{
               width: `${searchRef.current.getBoundingClientRect().width}px`,
               top: `${searchRef.current.getBoundingClientRect().bottom + 8}px`,
@@ -86,9 +85,16 @@ const SearchField: React.FC = () => {
             }}
           >
             {results?.map((result, index) => (
-              <div key={index} className="p-2 cursor-pointer">
-                <Link href={`/song/${result.id}`}>{result.song.title}</Link>
-              </div>
+              <Link key={index} href={`/song/${result.id}`}>
+                <div
+                  className="px-2 py-3 cursor-pointer rounded last:border-none border-b-[1px] border-[#545454] hover:bg-[#3D3D3D]"
+                  style={{
+                    transition: "all 0.1s ease",
+                  }}
+                >
+                  {result.song.title}
+                </div>
+              </Link>
             ))}
           </div>,
           document.getElementById("root")!

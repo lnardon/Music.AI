@@ -64,8 +64,8 @@ function Home() {
           >
             <Heart
               size={20}
-              fill={showFavorites ? "#FF0000" : "transparent"}
-              stroke={showFavorites ? "#FF0000" : "white"}
+              fill={showFavorites ? "#F8594E" : "transparent"}
+              stroke={showFavorites ? "#F8594E" : "white"}
             />
             Favorites
           </button>
