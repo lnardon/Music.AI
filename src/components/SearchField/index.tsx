@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+"use client";
+import Link from "next/link";
 import { useState, useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 import { Search } from "lucide-react";
@@ -10,7 +11,6 @@ const SearchField: React.FC = () => {
   const [showResults, setShowResults] = useState(false);
   const searchRef = useRef<HTMLDivElement>(null);
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const portalRoot = document.getElementById("root");
 
   function handleFiltering() {
     if (search.length > 0) {
@@ -49,7 +49,7 @@ const SearchField: React.FC = () => {
   }, [showResults]);
 
   useEffect(() => {
-    fetch("/songs").then((response) => {
+    fetch("/api/songs").then((response) => {
       if (response.ok) {
         response.json().then((data) => {
           setOptions(data.songs || []);
@@ -59,7 +59,7 @@ const SearchField: React.FC = () => {
   }, []);
 
   return (
-    <div ref={searchRef} className="relative w-full max-w-[24rem]">
+    <div ref={searchRef} className="relative w-full lg:max-w-[24rem]">
       <div className="flex items-center justify-start gap-2 p-2 rounded-lg shadow-md text-white bg-[rgba(255,255,255,0.1)]">
         <Search size={20} />
         <input
@@ -74,7 +74,6 @@ const SearchField: React.FC = () => {
         />
       </div>
       {showResults &&
-        portalRoot &&
         searchRef.current &&
         ReactDOM.createPortal(
           <div
@@ -87,19 +86,12 @@ const SearchField: React.FC = () => {
             }}
           >
             {results?.map((result, index) => (
-              <div
-                key={index}
-                className="p-2 cursor-pointer"
-                onClick={() => {
-                  alert("Clicked");
-                  setShowResults(false);
-                }}
-              >
-                {result.song.title}
+              <div key={index} className="p-2 cursor-pointer">
+                <Link href={`/song/${result.id}`}>{result.song.title}</Link>
               </div>
             ))}
           </div>,
-          portalRoot
+          document.getElementById("root")!
         )}
     </div>
   );
